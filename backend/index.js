@@ -11,6 +11,10 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+//routes
+const router = require("./routes/Router")
+app.use(router)
+
 app.listen(process.env.PORT || port, () => {
     console.log("Server is running!")
 })
