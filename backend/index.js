@@ -11,6 +11,15 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
+//solve CORS
+app.use(cors({credentials: true, origin: 'http://lcoalhost:3000'}))
+
+//upload directory
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+// DB connecttion
+require("./config/db.js")
+
 //routes
 const router = require("./routes/Router")
 app.use(router)
