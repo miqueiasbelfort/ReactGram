@@ -46,7 +46,11 @@ const register = async (req, res) => {
     })
 
 }
+const login = async (req, res) => {
+    res.send("login")
+}
 
 module.exports = {
-    register
+    register,
+    login
 }
