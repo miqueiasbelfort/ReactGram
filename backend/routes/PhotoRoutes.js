@@ -9,7 +9,8 @@ const {
     getPhotoById,
     updatePhoto,
     likePhoto,
-    commentPhoto
+    commentPhoto,
+    searchPhotos
 } = require("../controllers/PhotoController")
 
 // middlewares
@@ -23,9 +24,11 @@ router.post("/", authGuard, ImageUpload.single("image"), photoInsertValidation()
 router.delete("/:id", authGuard, deletePhoto)
 router.get("/", authGuard, getAllPhotos)
 router.get("/user/:id", authGuard, getUserPhotos)
+router.get("/search", authGuard, searchPhotos)
 router.get("/:id", authGuard, getPhotoById)
 router.put("/:id", authGuard, photoUpdatedValidation(), validate, updatePhoto)
 router.put("/like/:id", authGuard, likePhoto)
 router.put("/comment/:id", authGuard, commentValidation(), validate, commentPhoto)
+
 
 module.exports = router
