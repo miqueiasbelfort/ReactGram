@@ -6,11 +6,12 @@ const {
     deletePhoto, 
     getAllPhotos, 
     getUserPhotos,
-    getPhotoById
+    getPhotoById,
+    updatePhoto
 } = require("../controllers/PhotoController")
 
 // middlewares
-const {photoInsertValidation} = require("../middlewares/photoValidation")
+const {photoInsertValidation, photoUpdatedValidation} = require("../middlewares/photoValidation")
 const authGuard = require("../middlewares/authGuard")
 const validate = require("../middlewares/handleValidation")
 const {ImageUpload} = require("../middlewares/ImageUpload")
@@ -21,6 +22,6 @@ router.delete("/:id", authGuard, deletePhoto)
 router.get("/", authGuard, getAllPhotos)
 router.get("/user/:id", authGuard, getUserPhotos)
 router.get("/:id", authGuard, getPhotoById)
-
+router.put("/:id", authGuard, photoUpdatedValidation(), validate, updatePhoto)
 
 module.exports = router
