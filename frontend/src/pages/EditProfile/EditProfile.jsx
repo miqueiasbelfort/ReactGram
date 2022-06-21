@@ -66,7 +66,7 @@ const EditeProfile = () => {
 
 
     formData.append("user", userFormData)
-    await dispatch(updateProfile(userFormData))
+    await dispatch(updateProfile(formData))
 
     setTimeout(() => {
       dispatch(resetMessage())
@@ -87,10 +87,14 @@ const EditeProfile = () => {
       
       {/* Image Preview */}
       {(user.profileImage || previewImage) && (
-        <img src={
-          previewImage ? URL.createObjectURL(previewImage) : `${uploads}/users/${user.profileImage}`
-        } alt={user.name} 
-        className="profile-image"
+        <img 
+          src={
+            previewImage 
+              ? URL.createObjectURL(previewImage) 
+              : `${uploads}/users/${user.profileImage}`
+          } 
+          alt={user.name} 
+          className="profile-image"
         />
       )}
 
