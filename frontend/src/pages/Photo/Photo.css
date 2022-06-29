@@ -26,6 +26,15 @@
     display: flex;
     font-weight: bold;
 }
+.author-comment{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.author-comment img {
+    width: 30px;
+}
 
 #photo .author img {
     width: 50%;
